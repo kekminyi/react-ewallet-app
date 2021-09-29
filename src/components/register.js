@@ -87,7 +87,7 @@ const Register = () => {
         .then(() => {
           setSuccessful(true);
         })
-        .catch(() => {
+        .catch((e) => {
           setSuccessful(false);
         });
     }

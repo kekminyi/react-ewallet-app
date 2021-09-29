@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Router, Switch, Route, Link } from "react-router-dom";
 
@@ -17,9 +17,6 @@ import { clearMessage } from "./actions/message";
 import { history } from "./helpers/history";
 
 const App = () => {
-  const [showModeratorBoard, setShowModeratorBoard] = useState(false);
-  const [showAdminBoard, setShowAdminBoard] = useState(false);
-
   const { user: currentUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -31,8 +28,6 @@ const App = () => {
 
   useEffect(() => {
     if (currentUser) {
-      setShowModeratorBoard(currentUser.roles.includes("ROLE_MODERATOR"));
-      setShowAdminBoard(currentUser.roles.includes("ROLE_ADMIN"));
     }
   }, [currentUser]);
 
@@ -53,22 +48,6 @@ const App = () => {
                 Home
               </Link>
             </li>
-
-            {showModeratorBoard && (
-              <li className="nav-item">
-                <Link to={"/mod"} className="nav-link">
-                  Moderator Board
-                </Link>
-              </li>
-            )}
-
-            {showAdminBoard && (
-              <li className="nav-item">
-                <Link to={"/admin"} className="nav-link">
-                  Admin Board
-                </Link>
-              </li>
-            )}
 
             {currentUser && (
               <li className="nav-item">

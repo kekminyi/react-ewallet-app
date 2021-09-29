@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-import UserService from "../services/user.service";
+import userService from "../services/user.service";
 
 const Home = () => {
   const [content, setContent] = useState("");
 
   useEffect(() => {
-    UserService.getPublicContent().then(
+    userService.getPublicContent().then(
       (response) => {
         setContent(response.data);
       },
