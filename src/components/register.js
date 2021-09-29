@@ -159,7 +159,7 @@ const Register = (props) => {
                 }
                 role="alert"
               >
-                {message}
+                {message} Redirecting you to login page...
               </div>
             </div>
           )}

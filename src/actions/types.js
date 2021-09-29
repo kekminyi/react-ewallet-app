@@ -6,3 +6,9 @@ export const LOGOUT = "LOGOUT";
 
 export const SET_MESSAGE = "SET_MESSAGE";
 export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
+
+export const GET_VALUE_SUCCESS = "GET_VALUE_SUCCESS";
+export const GET_VALUE_FAIL = "GET_VALUE_FAIL";
+
+export const UPDATE_VALUE_SUCCESS = "UPDATE_VALUE_SUCCESS";
+export const UPDATE_VALUE_FAIL = "UPDATE_VALUE_FAIL";

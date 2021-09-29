@@ -12,5 +12,5 @@ module.exports = function (app) {
 
   app.get("/api/all", controller.allAccess);
 
-  app.get("/api/wallet", [authJWT.verifyToken], controller.userWallet);
+  app.get("/api/wallet", controller.getUserWallet);
 };

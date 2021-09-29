@@ -51,7 +51,7 @@ const Login = (props) => {
     if (checkBtn.current.context._errors.length === 0) {
       dispatch(login(username, password))
         .then(() => {
-          props.history.push("/user");
+          props.history.push("/wallet");
           window.location.reload();
         })
         .catch(() => {
