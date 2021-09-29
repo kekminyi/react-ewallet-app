@@ -85,6 +85,7 @@ const Register = () => {
     if (checkBtn.current.context._errors.length === 0) {
       dispatch(register(username, email, password))
         .then(() => {
+          console.info("hello");
           setSuccessful(true);
         })
         .catch((e) => {
@@ -141,14 +142,14 @@ const Register = () => {
                 />
               </div>
 
-              <div className="form-group">
+              <div className="form-group mt-2">
                 <button className="btn btn-primary btn-block">Sign Up</button>
               </div>
             </div>
           )}
 
           {message && (
-            <div className="form-group">
+            <div className="form-group mt-2">
               <div
                 className={
                   successful ? "alert alert-success" : "alert alert-danger"

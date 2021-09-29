@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
   const User = sequelize.define("users", {
-    //! TODO: implement userId
+    //! TODO: implement userId and eWallet value
     username: {
       type: Sequelize.STRING,
     },

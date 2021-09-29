@@ -20,6 +20,10 @@ const App = () => {
   const { user: currentUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
+  // useEffect runs both after first render and after every update render.
+  // combination of componentDidMount & componentDidUpdate.
+  // [] as the second parameter dictates what is required for effect to be triggered.
+  // a empty [] indicates update on every action.
   useEffect(() => {
     history.listen((location) => {
       dispatch(clearMessage()); // clear message when changing location
@@ -48,7 +52,9 @@ const App = () => {
                 Home
               </Link>
             </li>
-
+            {/* inline if with logical && operator */}
+            {/* true && expression = expression; false && expression = false */}
+            {/* this is primarily used when you want to display one item depending on condition */}
             {currentUser && (
               <li className="nav-item">
                 <Link to={"/user"} className="nav-link">
@@ -58,6 +64,7 @@ const App = () => {
             )}
           </div>
 
+          {/* ternary operator is when you wanna display either or items */}
           {currentUser ? (
             <div className="navbar-nav ml-auto">
               <li className="nav-item">
@@ -67,7 +74,7 @@ const App = () => {
               </li>
               <li className="nav-item">
                 <a href="/login" className="nav-link" onClick={logOut}>
-                  LogOut
+                  Log Out
                 </a>
               </li>
             </div>
@@ -88,6 +95,7 @@ const App = () => {
           )}
         </nav>
 
+        {/* mt3 stands for margin top 3px */}
         <div className="container mt-3">
           <Switch>
             <Route exact path={["/", "/home"]} component={Home} />

@@ -1,3 +1,13 @@
+body,
+html {
+  font-family: "Lato", sans-serif;
+}
+
+.navbar-brand {
+  margin-left: 34px;
+  font-weight: bold;
+}
+
 label {
   display: block;
   margin-top: 10px;
