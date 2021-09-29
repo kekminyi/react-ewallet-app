@@ -48,7 +48,7 @@ const vpassword = (value) => {
   }
 };
 
-const Register = () => {
+const Register = (props) => {
   const form = useRef();
   const checkBtn = useRef();
 
@@ -85,8 +85,11 @@ const Register = () => {
     if (checkBtn.current.context._errors.length === 0) {
       dispatch(register(username, email, password))
         .then(() => {
-          console.info("hello");
           setSuccessful(true);
+          window.setTimeout(function () {
+            props.history.push("/login");
+            window.location.reload();
+          }, 1400);
         })
         .catch((e) => {
           setSuccessful(false);

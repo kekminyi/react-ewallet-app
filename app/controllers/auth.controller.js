@@ -1,22 +1,22 @@
 const db = require("../models");
 const config = require("../config/auth.config");
-// User table
 const User = db.user;
-// Role table
 const Role = db.role;
 
 const Op = db.Sequelize.Op;
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
+const { v4: uuidv4 } = require("uuid");
 
-// default is always creating user; if require to direct other roles, need to change accordingly
 exports.signup = (req, res) => {
   // Save User to Database
   User.create({
+    userId: uuidv4(),
     username: req.body.username,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 8),
+    value: 0,
   })
     .then((user) => {
       if (req.body.roles) {
@@ -26,12 +26,15 @@ exports.signup = (req, res) => {
               [Op.or]: req.body.roles,
             },
           },
-        }).then(() => {
-          user.setRoles([1]).then(() => {
-            res
-              .status(200)
-              .send({ message: "User was registered successfully!" });
+        }).then((roles) => {
+          user.setRoles(roles).then(() => {
+            res.send({ message: "User was registered successfully!" });
           });
+        });
+      } else {
+        // user role = 1
+        user.setRoles([1]).then(() => {
+          res.send({ message: "User was registered successfully!" });
         });
       }
     })

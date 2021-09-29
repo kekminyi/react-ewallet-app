@@ -9,7 +9,7 @@ import Login from "./components/login";
 import Register from "./components/register";
 import Home from "./components/home";
 import Profile from "./components/profile";
-import BoardUser from "./components/board_user";
+import UserWallet from "./components/user_wallet";
 
 import { logout } from "./actions/auth";
 import { clearMessage } from "./actions/message";
@@ -44,21 +44,16 @@ const App = () => {
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
           <Link to={"/"} className="navbar-brand">
-            Min Yi
+            DBS
           </Link>
           <div className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <Link to={"/home"} className="nav-link">
-                Home
-              </Link>
-            </li>
             {/* inline if with logical && operator */}
             {/* true && expression = expression; false && expression = false */}
             {/* this is primarily used when you want to display one item depending on condition */}
             {currentUser && (
               <li className="nav-item">
-                <Link to={"/user"} className="nav-link">
-                  User
+                <Link to={"/wallet"} className="nav-link">
+                  Wallet
                 </Link>
               </li>
             )}
@@ -69,7 +64,7 @@ const App = () => {
             <div className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link to={"/profile"} className="nav-link">
-                  {currentUser.username}
+                  Profile
                 </Link>
               </li>
               <li className="nav-item">
@@ -98,11 +93,11 @@ const App = () => {
         {/* mt3 stands for margin top 3px */}
         <div className="container mt-3">
           <Switch>
-            <Route exact path={["/", "/home"]} component={Home} />
+            <Route exact path={["/"]} component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
-            <Route path="/user" component={BoardUser} />
+            <Route path="/wallet" component={UserWallet} />
           </Switch>
         </div>
       </div>

@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 
 import userService from "../services/user.service";
 
-const BoardUser = () => {
+const UserWallet = () => {
   const [content, setContent] = useState("");
 
   useEffect(() => {
-    userService.getUserBoard().then(
+    userService.getUserWallet().then(
       (response) => {
         setContent(response.data);
       },
@@ -32,4 +32,4 @@ const BoardUser = () => {
   );
 };
 
-export default BoardUser;
+export default UserWallet;

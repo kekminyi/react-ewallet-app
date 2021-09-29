@@ -10,7 +10,7 @@ module.exports = function (app) {
     next();
   });
 
-  app.get("/api/test/all", controller.allAccess);
+  app.get("/api/all", controller.allAccess);
 
-  app.get("/api/test/user", [authJWT.verifyToken], controller.userBoard);
+  app.get("/api/wallet", [authJWT.verifyToken], controller.userWallet);
 };
